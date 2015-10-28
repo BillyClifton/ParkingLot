@@ -2,25 +2,24 @@
 public class Level {
 	private int floor;
 	private ParkingSpot[] spots;
-	private int availableSpots = 0; 
+	private int availableSpots = 0;
 	private int spotsPerRow;
-	
-	public Level(int floor, int rows, int miniSpotsPerRow, int compactSpotsPerRow, int largeSpotsPerRow){
+
+	public Level(int floor, int rows, int miniSpotsPerRow, int compactSpotsPerRow, int largeSpotsPerRow) {
 		this.floor = floor;
 		this.spotsPerRow = miniSpotsPerRow + compactSpotsPerRow + largeSpotsPerRow;
 		int numberOfSpots = rows * spotsPerRow;
 		spots = new ParkingSpot[numberOfSpots];
-		VehicleSize size; 
+		VehicleSize size;
 		int spotCount = 0;
-		System.out.println(spots.length);
-		for(int row = 0; row < rows; row++){
-			for(int spot = 0; spot < spotsPerRow; spot++){
-				
+		for (int row = 0; row < rows; row++) {
+			for (int spot = 0; spot < spotsPerRow; spot++) {
+
 				if (spot < largeSpotsPerRow) {
 					size = VehicleSize.Large;
 				} else if (spot < largeSpotsPerRow + compactSpotsPerRow) {
 					size = VehicleSize.Compact;
-				}else{
+				} else {
 					size = VehicleSize.Mini;
 				}
 				spots[spotCount] = new ParkingSpot(this, row, spot, size);
@@ -29,15 +28,15 @@ public class Level {
 		}
 		availableSpots = numberOfSpots;
 	}
-	
-	public int getFloor(){
+
+	public int getFloor() {
 		return floor;
 	}
-	
+
 	public int availableSpots() {
 		return availableSpots;
 	}
-	
+
 	public boolean parkVehicle(Vehicle vehicle) {
 		if (availableSpots() < vehicle.getSpotsNeeded()) {
 			return false;
@@ -48,17 +47,17 @@ public class Level {
 		}
 		return parkStartingAtSpot(spotNumber, vehicle);
 	}
-	
+
 	private boolean parkStartingAtSpot(int spotNumber, Vehicle vehicle) {
 		vehicle.clearSpots();
 		boolean success = true;
 		for (int i = spotNumber; i < spotNumber + vehicle.spotsNeeded; i++) {
-			 success &= spots[i].park(vehicle);
+			success &= spots[i].park(vehicle);
 		}
 		availableSpots -= vehicle.spotsNeeded;
 		return success;
 	}
-	
+
 	private int findAvailableSpots(Vehicle vehicle) {
 		int spotsNeeded = vehicle.getSpotsNeeded();
 		int lastRow = -1;
@@ -80,11 +79,12 @@ public class Level {
 		}
 		return -1;
 	}
-	public ParkingSpot getSpot(int row, int spot){
-		int spotNumber = ((row+1) * spotsPerRow) + spot; 
-		return spots[spotNumber-1];
+
+	public ParkingSpot getSpot(int row, int spot) {
+		int spotNumber = ((row + 1) * spotsPerRow) + spot;
+		return spots[spotNumber - 1];
 	}
-	
+
 	public void print() {
 		int lastRow = -1;
 		for (int i = 0; i < spots.length; i++) {
@@ -96,7 +96,7 @@ public class Level {
 			spot.print();
 		}
 	}
-	
+
 	public void spotFreed() {
 		availableSpots++;
 	}

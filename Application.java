@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 public class Application {
 	public static HashMap<String, Vehicle> catalog = new HashMap<String, Vehicle>();
-	
+
 	public static void main(String[] args) {
 		int levels = 5;
 		int rows = 15;
@@ -12,21 +12,21 @@ public class Application {
 		int compactSpots = 40;
 		int largeSpots = 20;
 		ParkingLot lot = new ParkingLot(levels, rows, miniSpots, compactSpots, largeSpots);
-		while(takeCommand(lot)){
+		while (takeCommand(lot)) {
 			lot.print();
 		}
 
 	}
-	
+
 	public static boolean takeCommand(ParkingLot lot) {
 		String employeeNumber;
 		Vehicle vehicle;
 		Scanner user_input = new Scanner(System.in);
-		System.out.println("Enter Commmand");
+		System.out.println("Enter Commmand:");
 		switch (user_input.next()) {
 		case "park":
 			employeeNumber = user_input.next();
-	
+
 			System.out.println(employeeNumber);
 			switch (user_input.next()) {
 			case "bike":
@@ -59,17 +59,17 @@ public class Application {
 			}
 			break;
 		case "employee":
-				employeeNumber = user_input.next();
-				vehicle = catalog.get(employeeNumber);
-				if(vehicle != null){
-					System.out.println(vehicle.status());
-				}else{
-					System.out.println("There is no vehicle registered for employee "+employeeNumber);
-				}
+			employeeNumber = user_input.next();
+			vehicle = catalog.get(employeeNumber);
+			if (vehicle != null) {
+				System.out.println(vehicle.status());
+			} else {
+				System.out.println("There is no vehicle registered for employee " + employeeNumber);
+			}
 			break;
 
 		case "parking":
-				
+
 			break;
 		case "leave":
 			System.out.print("level:");
@@ -93,7 +93,7 @@ public class Application {
 			System.out.println("employee {employee id}");
 			System.out.println("eg. \"employee 12345678\"");
 			System.out.println("");
-			
+
 			System.out.println("To see parking occupation enter:");
 			System.out.println("parking");
 			System.out.println("eg. \"employee 12345678\"");
@@ -105,7 +105,7 @@ public class Application {
 		default:
 			System.out.println("Invalid command. Type help to see a list of commands");
 			break;
-			
+
 		}
 		return true;
 	}

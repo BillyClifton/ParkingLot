@@ -5,11 +5,11 @@ public abstract class Vehicle {
 	protected String employeeNumber;
 	protected int spotsNeeded;
 	protected VehicleSize size;
-	
+
 	public int getSpotsNeeded() {
 		return spotsNeeded;
 	}
-	
+
 	public VehicleSize getSize() {
 		return size;
 	}
@@ -17,24 +17,26 @@ public abstract class Vehicle {
 	public void parkInSpot(ParkingSpot spot) {
 		parkingSpots.add(spot);
 	}
-	
 
 	public void clearSpots() {
 		for (int i = 0; i < parkingSpots.size(); i++) {
 			parkingSpots.get(i).removeVehicle();
 		}
 		parkingSpots.clear();
-		System.out.println(this.getClass().getSimpleName()+" for employee "+employeeNumber+" left parking");
+		System.out.println(this.getClass().getSimpleName() + " for employee " + employeeNumber + " left parking");
 	}
-	
-	public String status(){
+
+	public String status() {
 		ParkingSpot spot = parkingSpots.get(0);
 		int row = spot.getRow();
 		int level = spot.getLevel();
 		int number = spot.getSpotNumber();
-		return this.getClass().getSimpleName()+" for employee "+employeeNumber+" parked in level "+level+", row "+row+" spot "+number;
+		return this.getClass().getSimpleName() + " for employee " + employeeNumber + " parked in level " + level
+				+ ", row " + row + " spot " + number;
 	}
+
 	public abstract boolean canFitInSpot(ParkingSpot spot);
+
 	public abstract void print();
 
 }

@@ -4,12 +4,12 @@ public class Motorcycle extends Vehicle {
 		size = VehicleSize.Mini;
 		employeeNumber = employee;
 	}
-	
+
 	public boolean canFitInSpot(ParkingSpot spot) {
 		return true;
 	}
-	
+
 	public void print() {
 		System.out.print("M");
-	}	
+	}
 }

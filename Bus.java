@@ -4,11 +4,11 @@ public class Bus extends Vehicle {
 		size = VehicleSize.Large;
 		employeeNumber = employee;
 	}
-	
+
 	public boolean canFitInSpot(ParkingSpot spot) {
 		return spot.getSize() == VehicleSize.Large;
 	}
-	
+
 	public void print() {
 		System.out.print("B");
 	}
