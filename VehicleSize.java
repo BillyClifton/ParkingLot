@@ -1,5 +1,3 @@
 public enum VehicleSize {
-	Mini, 
-	Compact, 
-	Large,
+	Mini, Compact, Large,
 }

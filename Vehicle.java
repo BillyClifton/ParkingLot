@@ -23,7 +23,6 @@ public abstract class Vehicle {
 			parkingSpots.get(i).removeVehicle();
 		}
 		parkingSpots.clear();
-		System.out.println(this.getClass().getSimpleName() + " for employee " + employeeNumber + " left parking");
 	}
 
 	public String status() {

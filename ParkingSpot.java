@@ -55,6 +55,15 @@ public class ParkingSpot {
 		vehicle = null;
 	}
 
+	public void report() {
+		if (this.vehicle != null) {
+			System.out.println("level " + level.getFloor() + ", row " + row + ", spot " + spotNumber + ":"
+					+ this.vehicle.getClass().getSimpleName() + " for employee " + this.vehicle.employeeNumber);
+		} else {
+			System.out.println("level " + level.getFloor() + ", row " + row + ", spot " + spotNumber + ": empty");
+		}
+	}
+
 	public void print() {
 		if (vehicle == null) {
 			if (spotSize == VehicleSize.Compact) {
